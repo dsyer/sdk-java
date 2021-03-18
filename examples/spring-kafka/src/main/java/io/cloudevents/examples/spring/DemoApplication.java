@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 import io.cloudevents.CloudEvent;
 import io.cloudevents.core.builder.CloudEventBuilder;
+import io.cloudevents.spring.function.CloudEventFunctionInvocationHelper;
 import io.cloudevents.spring.messaging.CloudEventMessageConverter;
 
 @SpringBootApplication
@@ -36,6 +37,11 @@ public class DemoApplication {
         @Bean
         public CloudEventMessageConverter cloudEventMessageConverter() {
             return new CloudEventMessageConverter();
+        }
+
+        @Bean
+        public CloudEventFunctionInvocationHelper invocationHelper() {
+            return new CloudEventFunctionInvocationHelper();
         }
     }
 
