@@ -68,15 +68,13 @@ public class StructuredApplicationTests {
 
         MessageHeaders headers = response.getHeaders();
 
-        assertThat(headers.get("ce-id")).isNotNull();
-        assertThat(headers.get("ce_id")).isNull();
-        assertThat(headers.get("ce-source")).isNotNull();
-        assertThat(headers.get("ce-type")).isNotNull();
+        assertThat(headers.get("ce_id")).isNotNull();
+        assertThat(headers.get("ce_source")).isNotNull();
+        assertThat(headers.get("ce_type")).isNotNull();
 
-        assertThat(headers.get("ce-id")).isNotEqualTo("12345");
-        assertThat(headers.get("ce-type")).isEqualTo("io.spring.event.Foo");
-        assertThat(headers.get("ce-source")).isEqualTo("https://spring.io/foos");
-        assertThat(headers.get("ce-datacontenttype")).isEqualTo("application/json");
+        assertThat(headers.get("ce_id")).isNotEqualTo("12345".getBytes());
+        assertThat(headers.get("ce_type")).isEqualTo("io.spring.event.Foo".getBytes());
+        assertThat(headers.get("ce_source")).isEqualTo("https://spring.io/foos".getBytes());
 
     }
 

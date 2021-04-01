@@ -14,7 +14,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 
 import io.cloudevents.CloudEvent;
 import io.cloudevents.core.builder.CloudEventBuilder;
-import io.cloudevents.spring.kafka.CloudEventRecordMessageConverter;
+import io.cloudevents.spring.messaging.CloudEventMessageConverter;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -42,17 +42,16 @@ public class DemoApplication {
         return TopicBuilder.name("in").build();
     }
 
+    /**
+     * Configure a MessageConverter for Spring Cloud Function to pick up and use to
+     * convert to and from CloudEvent and Message.
+     */
     @Configuration
     public static class CloudEventMessageConverterConfiguration {
-        /**
-         * Configure a RecordMessageConverter for Spring Kafka to pick up and use to
-         * convert to and from CloudEvent and Message.
-         */
         @Bean
-        public CloudEventRecordMessageConverter recordMessageConverter() {
-            return new CloudEventRecordMessageConverter();
+        public CloudEventMessageConverter cloudEventMessageConverter() {
+            return new CloudEventMessageConverter();
         }
-
     }
 
 }

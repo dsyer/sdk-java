@@ -167,6 +167,7 @@
                         <link>https://fasterxml.github.io/jackson-databind/javadoc/2.10/</link>
                     </links>
                     <source>8</source>
+                    <detectJavaApiLink>false</detectJavaApiLink>
                 </configuration>
                 <executions>
                     <execution>
