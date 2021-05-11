@@ -23,7 +23,7 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    @KafkaListener(id = "listener", topics = "in", clientIdPrefix = "demo")
+    @KafkaListener(id = "listener", topics = "in", clientIdPrefix = "demo", contentTypeConverter = "cloudEventMessageConverter")
     @SendTo("out")
     public CloudEvent listen(CloudEvent event) {
         System.err.println("Echo: " + event);

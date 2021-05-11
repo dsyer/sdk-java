@@ -26,6 +26,7 @@ import io.cloudevents.core.message.impl.MessageUtils;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.converter.MessageConverter;
+import org.springframework.messaging.converter.SmartMessageConverter;
 
 import java.nio.charset.Charset;
 
@@ -37,7 +38,7 @@ import java.nio.charset.Charset;
  *
  * @author Dave Syer
  */
-public class CloudEventMessageConverter implements MessageConverter {
+public class CloudEventMessageConverter implements SmartMessageConverter {
 
 	@Override
 	public Object fromMessage(Message<?> message, Class<?> targetClass) {
@@ -103,5 +104,15 @@ public class CloudEventMessageConverter implements MessageConverter {
 		}
 		return null;
 	}
+
+    @Override
+    public Object fromMessage(Message<?> message, Class<?> targetClass, Object conversionHint) {
+        return fromMessage(message, targetClass);
+    }
+
+    @Override
+    public Message<?> toMessage(Object payload, MessageHeaders headers, Object conversionHint) {
+        return toMessage(payload, headers);
+    }
 
 }

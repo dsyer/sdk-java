@@ -1,7 +1,6 @@
 package io.cloudevents.examples.spring;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertThat;
 
 import java.net.URI;
 import java.util.concurrent.ArrayBlockingQueue;
